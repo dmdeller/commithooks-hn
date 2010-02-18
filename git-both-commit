@@ -6,7 +6,7 @@
 #   $3 URL for Git web server for this repo
 #   $4 From address for Debian BTS
 
-BASE="$(dirname $(readlink -f $0))"
+BASE="$(dirname $0)"
 
 "$BASE/git-trac-commit" "$1" "$2"
 "$BASE/git-deb-commit" "$3" "$4"

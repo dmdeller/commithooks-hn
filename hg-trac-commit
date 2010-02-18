@@ -9,7 +9,7 @@ set -e
 URL="$1"
 tracpath="$2"
 
-CMD="$(dirname $(readlink -f $0))/trac-post-commit-hook"
+CMD="$(dirname $0)/trac-post-commit-hook"
 
 hg log -r $HG_NODE --template '{node|short}\n{author}\n{desc}\n' | {
   read shortnode

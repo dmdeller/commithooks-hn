@@ -14,7 +14,7 @@ email="$1"
 tracurl="$2"
 tracpath="$3"
 
-INSTDIR="$(dirname $(readlink -f $0))"
+INSTDIR="$(dirname $0)"
 
 [[ -z ${DARCS} ]] && DARCS="/usr/bin/darcs"
 [[ -z ${CURRENTHASH} ]] && CURRENTHASH="_darcs/current-hash"

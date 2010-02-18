@@ -9,8 +9,8 @@ set -e
 URL="$1"
 tracpath="$2"
 
-CMD="$(dirname $(readlink -f $0))/trac-post-commit-hook"
-GITREVCMD="$(dirname $(readlink -f $0))/git-find-revs"
+CMD="$(dirname $0)/trac-post-commit-hook"
+GITREVCMD="$(dirname $0)/git-find-revs"
 FILE="`mktemp -t git-trac-commit.XXXXXXXXXX`"
 
 procrevs() {

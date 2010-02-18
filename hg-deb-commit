@@ -9,7 +9,7 @@ set -e
 URL="$1"
 FROMADDR="$2"
 
-CMD="$(dirname $(readlink -f $0))/deb-post-commit-hook"
+CMD="$(dirname $0)/deb-post-commit-hook"
 
 FILE="`mktemp -t hg-commit.XXXXXXXXXX`"
 

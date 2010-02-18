@@ -24,8 +24,8 @@ set -e
 URL="$1"
 FROMADDR="$2"
 
-CMD="$(dirname $(readlink -f $0))/deb-post-commit-hook"
-GITREVCMD="$(dirname $(readlink -f $0))/git-find-revs"
+CMD="$(dirname $0)/deb-post-commit-hook"
+GITREVCMD="$(dirname $0)/git-find-revs"
 FILE="`mktemp -t git-deb-commit.XXXXXXXXXX`"
 
 procrevs() {
