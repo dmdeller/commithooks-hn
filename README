@@ -1,9 +1,17 @@
 ------------------------------------------------------------
-vcs-commithooks
+commithooks-hn
 ------------------------------------------------------------
 
-Homepage: http://software.complete.org/vcs-commithooks
-Author: John Goerzen <jgoerzen@complete.org>
+This is a fork of the commithooks project to fix compatibility with
+Trac 0.11, etc. after an attempt to contact the original author of
+the project was unsuccessful.
+
+Fork Homepage: http://github.com/dmdeller/commithooks-hn
+
+------------------------------------------------------------
+
+Original Homepage: http://software.complete.org/vcs-commithooks
+Original Author: John Goerzen <jgoerzen@complete.org>
 
 
 This is a collection of scripts to process commit actions from
@@ -212,6 +220,31 @@ The args are:
  $2 - Path to Trac installation
  $3 - URL for gitweb server (see notes above)
  $4 - From address for debbugs BTS
+
+=== Combining the above with other post-receive hooks
+
+Git comes bundled with an example post-receive hook that sends an
+e-mail. You may want to use this or other post-receive hooks in
+addition to the ones that are part of commithooks.
+
+Since data is passed via stdin, not command-line arguments, you can
+do this with the 'tee' program. Example:
+
+  tee >(/usr/share/doc/git-core/contrib/hooks/post-receive-email) \
+    >(/usr/bin/git-trac-commit http://trac.example.com/project \
+      /opt/trac/instances/project) \
+    >/dev/null
+
+The final /dev/null is necessary to prevent tee from additionally
+echoing the output to stdout (i.e. your terminal window).
+
+Also make sure to change the interpreter in the first line of your
+post-receive hook:
+  #!/bin/sh
+to this:
+  #!/usr/bin/env bash
+because the syntax I have used with tee is specific to bash and does
+not work with other shells.
 
 ------------------------------------------------------------
 MERCURIAL FRONTENDS
